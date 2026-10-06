@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시안 A · 이야기 상세 — 수원시의원 아카이브</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root { --ink: #111; --line: #111; --muted: #555; --paper: #fff; --bg: #ecebe8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font: 15px/1.6 Pretendard, "Helvetica Neue", sans-serif; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+  .frame { max-width: 1200px; margin: 32px auto; background: var(--paper); box-shadow: 0 1px 24px rgba(0,0,0,.06); }
+
+  /* 두 줄짜리 4칸 내비게이션 */
+  .nav { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+  .nav a, .nav span { padding: 14px 20px; font-size: 16px; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
+  .nav a:hover { background: #f4f4f2; }
+  .nav .menu { font-size: 18px; }
+  .nav + .nav { border-top: 0; }
+  .nav.sub a { font-size: 15px; }
+  .nav.sub small { font-size: 12px; }
+
+  /* 본문: 왼쪽 이미지, 오른쪽 글 */
+  .story { display: grid; grid-template-columns: 1fr 1fr; }
+  .figures { padding: 20px; display: flex; flex-direction: column; gap: 20px; border-right: 1px solid var(--line); }
+  figure img { width: 100%; display: block; filter: grayscale(1) contrast(1.05); transition: filter .3s; }
+  figure:hover img { filter: none; }
+  figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+  .text { display: flex; flex-direction: column; }
+  .text-inner { padding: 20px 20px 40px; position: sticky; top: 0; }
+  h1 { font-size: 17px; font-weight: 500; line-height: 1.35; text-transform: uppercase; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0; }
+  .tags span { border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; font-size: 11px; }
+  .lead { font-style: italic; font-size: 14.5px; margin-bottom: 18px; }
+  .text p + p { margin-top: 14px; }
+  h2 { font-size: 13px; font-weight: 600; margin: 28px 0 10px; text-transform: uppercase; }
+  .credit { margin-top: 24px; font-size: 13px; }
+  .credit em { display: block; }
+  .actions { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); position: sticky; bottom: 0; background: var(--paper); }
+  .actions a { padding: 14px 20px; display: flex; justify-content: space-between; text-transform: uppercase; }
+  .actions a + a { border-left: 1px solid var(--line); }
+  .actions a:hover { background: #f4f4f2; }
+
+  .next { border-top: 1px solid var(--line); padding: 14px 20px; display: flex; justify-content: space-between; font-size: 16px; }
+
+  .label { position: fixed; left: 16px; bottom: 16px; font-size: 12px; background: var(--ink); color: #fff; padding: 6px 10px; }
+
+  @media (max-width: 760px) {
+    .frame { margin: 0; }
+    .nav { grid-template-columns: repeat(2, 1fr); }
+    .nav a, .nav span { padding: 12px 16px; font-size: 14px; }
+    .story { grid-template-columns: 1fr; }
+    .figures { border-right: 0; border-bottom: 1px solid var(--line); padding: 16px; }
+    .text-inner { padding: 16px; position: static; }
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+  <nav class="nav">
+    <a href="#">이야기</a><a href="b-items.html">자료</a><a href="#">컬렉션</a><a href="c-home.html">소개 <span class="menu">≡</span></a>
+  </nav>
+  <nav class="nav sub">
+    <a href="#">시기 <small>+</small></a><a href="#">원문 PDF <small>+</small></a><a href="#">각주 <small>≡</small></a><a href="#">공유 <small>+</small></a>
+  </nav>
+
+  <main class="story">
+    <section class="figures">
+      <figure>
+        <img src="assets/05-council1-1952.jpg" alt="제1대 당선 시의원 좌담회 기념 촬영">
+        <figcaption>제1대 당선시의원 좌담회 기념 촬영 (1952년, 차인순 유족 제공)</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/04-chainsoon.jpg" alt="연단에서 연설하는 차인순">
+        <figcaption>초대 전기 부의장 차인순 (차인순 유족 제공)</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/06-poster-1956.jpg" alt="종합운동경기대회 포스터">
+        <figcaption>지방자치제 실시 4주년 기념 종합운동경기대회 포스터 (1956년, 수원박물관 소장)</figcaption>
+      </figure>
+    </section>
+
+    <section class="text">
+      <div class="text-inner">
+        <h1>해방 이후, 첫 시의회<br>수원시의원들의 사회적 배경</h1>
+        <div class="tags"><span>Ⅱ장</span><span>해방 이후</span><span>1952–1961</span></div>
+        <p class="lead">1952년 처음으로 구성된 수원시의회. 전쟁의 한가운데에서 치러진 선거로 뽑힌 시의원들은 누구였고, 어떤 경력을 거쳐 지역 정치에 나섰을까.</p>
+        <p>해방 이후 이승만 정권은 지방자치 실시에 미온적이었다. 주요한 이유는 시기상조론과 치안과 안보 문제였다. 이는 야당과 언론의 집중적 비판 대상이기도 했다.</p>
+        <p>결국 지방자치는 전쟁 중이던 1952년에 실시되었고, 수원에서도 제1대 시의회가 꾸려졌다. 이 시기 시의원들은 관변 활동과 청년단체 경력을 바탕으로 진출한 경우가 많았다.</p>
+        <h2>함께 보는 자료</h2>
+        <p>초대 시의원들의 좌담회 기념사진과 전기 부의장 차인순의 연설 장면, 그리고 지방자치제 실시 4주년을 기념한 운동경기대회 포스터는 1950년대 지방의회가 지역 사회에 자리 잡던 모습을 보여 준다.</p>
+        <p class="credit">글<em>황병주 (국사편찬위원회 편사연구관)<br>유상희 (서울대학교 석사)</em></p>
+        <p class="credit">출처<em>『수원시의원으로 살다』 Ⅱ장, 120–153쪽</em></p>
+      </div>
+      <div class="actions">
+        <a href="../uploads/수원시의원으로살다_2장.pdf">원문 PDF <span>↓</span></a>
+        <a href="b-items.html">관련 자료 <span>→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <a class="next" href="#"><span>다음 이야기 — 지방자치 부활과 지역 정치</span><span>+</span></a>
+</div>
+<div class="label">시안 A · ref1</div>
+</body>
+</html>

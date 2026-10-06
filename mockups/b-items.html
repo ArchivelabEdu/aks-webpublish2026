@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시안 B · 자료 목록 — 수원시의원 아카이브</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root { --ink: #111; --line: #111; --muted: #666; --accent: #f28a2e; --paper: #fff; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font: 14px/1.5 Pretendard, "Helvetica Neue", sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  button, select { font: inherit; color: inherit; }
+
+  header { display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 12px 20px; border-bottom: 1px solid var(--line); }
+  .brand { display: flex; align-items: center; gap: 14px; font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+  .brand svg { width: 20px; height: 20px; }
+  .menu { display: flex; justify-content: space-between; font-size: 20px; }
+  .menu a.on::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: 3px; }
+
+  .bar { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); font-size: 12px; text-transform: uppercase; }
+  .bar > div { display: flex; justify-content: space-between; align-items: center; padding: 6px 20px; }
+  .bar > div + div { border-left: 1px solid var(--line); }
+  .bar select { border: 0; background: none; font-size: 12px; text-transform: uppercase; cursor: pointer; }
+
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .cell { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 12px 14px; display: flex; flex-direction: column; min-height: 330px; }
+  .cell:nth-child(4n) { border-right: 0; }
+  .meta { display: flex; justify-content: space-between; gap: 12px; font-size: 11px; text-transform: uppercase; }
+  .meta span:last-child { text-align: right; }
+  .thumb { flex: 1; display: flex; align-items: center; justify-content: center; padding: 18px 10px; }
+  .thumb img { max-width: 72%; max-height: 190px; box-shadow: 0 2px 10px rgba(0,0,0,.18); transition: transform .25s; }
+  .cell:hover .thumb img { transform: translateY(-4px); }
+  .foot { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .foot b { font-size: 15px; font-weight: 500; white-space: nowrap; }
+  .foot span { font-size: 12px; color: var(--muted); text-align: right; }
+  .cell[hidden] { display: none; }
+
+  .label { position: fixed; left: 16px; bottom: 16px; font-size: 12px; background: var(--ink); color: #fff; padding: 6px 10px; }
+
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .cell:nth-child(4n) { border-right: 1px solid var(--line); }
+    .cell:nth-child(2n) { border-right: 0; }
+  }
+  @media (max-width: 640px) {
+    header { grid-template-columns: 1fr; gap: 10px; padding: 12px 16px; }
+    .brand { font-size: 17px; }
+    .menu { font-size: 16px; }
+    .bar > div { padding: 6px 16px; }
+    .cell { min-height: 260px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">수원시의원 아카이브
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg>
+  </div>
+  <nav class="menu">
+    <a class="on" href="#">자료</a><a href="a-story.html">이야기</a><a href="c-home.html">소개</a><a href="#">컬렉션</a>
+  </nav>
+</header>
+
+<div class="bar">
+  <div>유형
+    <select id="type">
+      <option value="">전체 ∨</option>
+      <option>사진</option><option>신문</option><option>포스터</option><option>선거공보</option><option>문서</option>
+    </select>
+  </div>
+  <div>정렬
+    <select id="sort">
+      <option value="asc">연도 오름차순 ∨</option>
+      <option value="desc">연도 내림차순 ∨</option>
+    </select>
+  </div>
+</div>
+
+<main class="grid" id="grid">
+  <a class="cell" data-type="신문" data-year="1931" href="#">
+    <div class="meta"><span>『동아일보』</span><span>신문 · 식민지 시기</span></div>
+    <div class="thumb"><img src="assets/01-newspaper-1931.jpg" alt=""></div>
+    <div class="foot"><b>1931</b><span>면협의원 후보들의 수원 발전방안 토의</span></div>
+  </a>
+  <a class="cell" data-type="신문" data-year="1934" href="#">
+    <div class="meta"><span>『매일신보』</span><span>신문 · 식민지 시기</span></div>
+    <div class="thumb"><img src="assets/02-kimhakbae-1934.jpg" alt=""></div>
+    <div class="foot"><b>1934</b><span>김학배(제4대 수원읍회 의원)와 직물공장</span></div>
+  </a>
+  <a class="cell" data-type="사진" data-year="1935" href="#">
+    <div class="meta"><span>수원박물관</span><span>사진 · 식민지 시기</span></div>
+    <div class="thumb"><img src="assets/03-eupsamuso.jpg" alt=""></div>
+    <div class="foot"><b>일제시기</b><span>수원읍사무소와 수원공회당</span></div>
+  </a>
+  <a class="cell" data-type="사진" data-year="1952" href="#">
+    <div class="meta"><span>차인순 유족</span><span>사진 · 해방 이후</span></div>
+    <div class="thumb"><img src="assets/05-council1-1952.jpg" alt=""></div>
+    <div class="foot"><b>1952</b><span>제1대 당선시의원 좌담회 기념 촬영</span></div>
+  </a>
+  <a class="cell" data-type="사진" data-year="1953" href="#">
+    <div class="meta"><span>차인순 유족</span><span>사진 · 해방 이후</span></div>
+    <div class="thumb"><img src="assets/04-chainsoon.jpg" alt=""></div>
+    <div class="foot"><b>1950년대</b><span>초대 전기 부의장 차인순</span></div>
+  </a>
+  <a class="cell" data-type="포스터" data-year="1956" href="#">
+    <div class="meta"><span>수원박물관</span><span>포스터 · 해방 이후</span></div>
+    <div class="thumb"><img src="assets/06-poster-1956.jpg" alt=""></div>
+    <div class="foot"><b>1956</b><span>지방자치제 실시 4주년 기념 종합운동경기대회</span></div>
+  </a>
+  <a class="cell" data-type="사진" data-year="1991" href="#">
+    <div class="meta"><span>수원시의회</span><span>사진 · 지방자치 부활</span></div>
+    <div class="thumb"><img src="assets/07-council4-1991.jpg" alt=""></div>
+    <div class="foot"><b>1991</b><span>제4대 수원시의회 개원 기념사진</span></div>
+  </a>
+  <a class="cell" data-type="사진" data-year="1991" href="#">
+    <div class="meta"><span>수원박물관</span><span>사진 · 지방자치 부활</span></div>
+    <div class="thumb"><img src="assets/08-posters-1991.jpg" alt=""></div>
+    <div class="foot"><b>1991</b><span>제4대 시의원 선거 입후보자 벽보</span></div>
+  </a>
+  <a class="cell" data-type="선거공보" data-year="1991" href="#">
+    <div class="meta"><span>중앙선거관리위원회</span><span>선거공보 · 지방자치 부활</span></div>
+    <div class="thumb"><img src="assets/09-leesuyeon-a.jpg" alt=""></div>
+    <div class="foot"><b>1991</b><span>이수연 후보 선거공보 (앞)</span></div>
+  </a>
+  <a class="cell" data-type="선거공보" data-year="1991" href="#">
+    <div class="meta"><span>중앙선거관리위원회</span><span>선거공보 · 지방자치 부활</span></div>
+    <div class="thumb"><img src="assets/10-leesuyeon-b.jpg" alt=""></div>
+    <div class="foot"><b>1991</b><span>이수연 후보 선거공보 (뒤)</span></div>
+  </a>
+  <a class="cell" data-type="사진" data-year="1997" href="#">
+    <div class="meta"><span>수원박물관</span><span>사진 · 지방자치 부활</span></div>
+    <div class="thumb"><img src="assets/11-heoyoungsoon-1997.jpg" alt=""></div>
+    <div class="foot"><b>1997</b><span>허영순 위원장</span></div>
+  </a>
+  <a class="cell" data-type="문서" data-year="2026" href="../uploads/수원시의원으로살다_2장.pdf">
+    <div class="meta"><span>『수원시의원으로 살다』</span><span>원문 PDF</span></div>
+    <div class="thumb"><img src="assets/00-chapter2-cover.jpg" alt=""></div>
+    <div class="foot"><b>Ⅱ장</b><span>수원시의원들의 사회적 배경 · 120–153쪽</span></div>
+  </a>
+</main>
+
+<div class="label">시안 B · ref2</div>
+
+<script>
+  const grid = document.getElementById('grid');
+  const cells = [...grid.children];
+  function apply() {
+    const type = document.getElementById('type').value;
+    const dir = document.getElementById('sort').value === 'asc' ? 1 : -1;
+    cells.sort((a, b) => (a.dataset.year - b.dataset.year) * dir).forEach(c => {
+      c.hidden = type && c.dataset.type !== type;
+      grid.appendChild(c);
+    });
+  }
+  document.getElementById('type').addEventListener('change', apply);
+  document.getElementById('sort').addEventListener('change', apply);
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+# Omeka S 로컬 개발 환경
+# 이미지: libops/omeka-s (Omeka S 4.2.1, PHP 8.4, nginx) — https://github.com/libops/buildkit
+services:
+  mariadb:
+    image: mariadb:lts
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: omeka_s
+      MARIADB_USER: omeka_s
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_CHARACTER_SET_SERVER: utf8mb4
+      MARIADB_COLLATION_SERVER: utf8mb4_unicode_ci
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  omeka-s:
+    image: libops/omeka-s:4.2.1-php84
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    environment:
+      DB_HOST: mariadb
+      DB_NAME: omeka_s
+      DB_USER: omeka_s
+      DB_PASSWORD: ${DB_PASSWORD}
+      OMEKA_S_ADMIN_EMAIL: ${OMEKA_S_ADMIN_EMAIL}
+      OMEKA_S_ADMIN_NAME: ${OMEKA_S_ADMIN_NAME}
+      OMEKA_S_ADMIN_PASSWORD: ${OMEKA_S_ADMIN_PASSWORD}
+      OMEKA_S_SITE_TITLE: ${OMEKA_S_SITE_TITLE}
+      OMEKA_S_TIME_ZONE: Asia/Seoul
+      OMEKA_S_LOCALE: ko_KR
+    volumes:
+      - omeka-files:/var/www/omeka-s/files
+
+volumes:
+  db-data:
+  omeka-files:

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>컬렉션 — 수원시의원 아카이브</title>
+<meta name="description" content="시기와 자료 유형별로 수원 지방의회 관련 사진·신문·포스터·선거공보를 둘러봅니다.">
+<meta property="og:title" content="수원시의원 아카이브">
+<meta property="og:description" content="누가 수원을 대표해 왔는가 — 수원 지방의원의 역사를 담은 디지털 아카이브">
+<meta property="og:image" content="assets/img/hero.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="rail" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="수원시의원 아카이브 홈">
+      <img src="assets/img/logo-mark.svg" alt="">
+      <span class="logo-text">수원시의원 아카이브<small>SUWON COUNCIL ARCHIVE</small></span>
+    </a>
+    <nav class="nav">
+      <a href="collection.html" aria-current="page">컬렉션</a>
+      <a href="exhibit.html">디지털 전시</a>
+      <a href="about.html">소개</a>
+    </nav>
+    <form class="search" action="search.html" role="search">
+      <label class="sr-only" for="hq">자연어 검색</label>
+      <input id="hq" name="q" type="search" placeholder="무엇이든 물어보세요">
+      <button type="submit" aria-label="검색"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg></button>
+    </form>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="page-title">
+    <h1 id="c-title">전체 자료</h1>
+    <p id="c-desc"></p>
+  </div>
+  <div class="layout">
+    <aside class="filters">
+      <h2>시기</h2>
+      <ul id="f-period"></ul>
+      <h2>자료 유형</h2>
+      <ul id="f-type"></ul>
+    </aside>
+    <section>
+      <div class="result-bar">
+        <div id="c-count"></div>
+        <label>정렬
+          <select id="c-sort">
+            <option value="asc">연도 오름차순</option>
+            <option value="desc">연도 내림차순</option>
+          </select>
+        </label>
+      </div>
+      <div class="cards four" id="collection"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 수원시의원 아카이브 · 원문: 황병주·유상희, 『수원시의원으로 살다』 Ⅱ장</span>
+    <nav><a href="collection.html">컬렉션</a><a href="exhibit.html">디지털 전시</a><a href="about.html">소개</a></nav>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

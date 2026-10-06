@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시안 C · 홈 — 수원시의원 아카이브</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root { --ink: #111; --muted: #8a8a8a; --bg: #f2f2f0; --rail: #111; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font: 14px/1.55 Pretendard, "Helvetica Neue", sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  .page { max-width: 1180px; margin: 0 auto; padding: 40px 64px 80px 40px; }
+
+  /* 오른쪽 검은 레일 (사이드 패널 토글) */
+  .rail { position: fixed; top: 0; right: 0; width: 14px; height: 100vh; background: var(--rail); }
+  .rail::before { content: "‹"; position: absolute; top: 18px; left: -14px; width: 14px; text-align: center; font-size: 16px; }
+
+  header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 72px; }
+  .logo { font-size: 15px; font-weight: 600; line-height: 1.2; }
+  .logo span { display: inline-block; width: 40px; border-top: 2px solid; vertical-align: 5px; margin-left: 6px; }
+  .title { font-size: 40px; font-weight: 800; line-height: 1.05; letter-spacing: -0.04em; text-align: right; }
+
+  .layout { display: grid; grid-template-columns: 220px 1fr; gap: 56px; }
+  aside h2, .section h2 { font-size: 13px; font-weight: 700; padding-bottom: 8px; border-bottom: 2px solid var(--ink); margin-bottom: 14px; }
+  aside p { font-size: 14px; margin-bottom: 40px; }
+  aside ul { list-style: none; margin-bottom: 40px; }
+  aside li { color: #555; line-height: 1.75; }
+  aside li a:hover { color: var(--ink); }
+  aside li.on { color: var(--ink); font-weight: 700; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 14px; }
+  .card { display: flex; flex-direction: column; border-bottom: 2px solid var(--ink); padding-bottom: 14px; }
+  .card .img { aspect-ratio: 4 / 3; overflow: hidden; margin-bottom: 14px; position: relative; }
+  .card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+  .card .img::after { content: ""; position: absolute; inset: 0; mix-blend-mode: multiply; opacity: .85; transition: opacity .3s; }
+  .tone-red .img::after { background: #e8463c; }
+  .tone-blue .img::after { background: #1f6fd1; }
+  .tone-yellow .img::after { background: #f2c230; }
+  .card .img img { filter: grayscale(1) contrast(1.1); }
+  .card:hover .img::after { opacity: 0; }
+  .card:hover .img img { filter: none; transform: scale(1.03); }
+  .card h3 { font-size: 15px; font-weight: 700; line-height: 1.3; }
+  .card .kind { font-size: 12px; font-weight: 600; font-style: italic; color: #444; }
+  .card .when { color: var(--muted); font-size: 13px; margin-top: 10px; }
+  .card .where { font-size: 13px; }
+  .card .desc { font-size: 16px; line-height: 1.35; margin: 16px 0; flex: 1; }
+  .card .plus { width: 16px; height: 16px; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 13px; line-height: 16px; text-align: center; }
+
+  .label { position: fixed; left: 16px; bottom: 16px; font-size: 12px; background: var(--ink); color: #fff; padding: 6px 10px; }
+
+  @media (max-width: 960px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .layout { grid-template-columns: 180px 1fr; gap: 32px; }
+  }
+  @media (max-width: 640px) {
+    .page { padding: 24px 30px 80px 16px; }
+    header { margin-bottom: 40px; }
+    .title { font-size: 28px; }
+    .layout { grid-template-columns: 1fr; gap: 8px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="rail" aria-hidden="true"></div>
+<div class="page">
+  <header>
+    <a class="logo" href="#">수원시의원<span></span><br>아카이브</a>
+    <h1 class="title">수원시의원으로<br>살다</h1>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <h2>소개</h2>
+      <p>1920년대 면협의회부터 1991년 지방자치 부활 이후까지, 수원의 지방의원들이 누구였고 어떤 배경에서 지역 정치에 나섰는지를 사진·신문·선거 자료로 살펴보는 디지털 아카이브입니다.</p>
+      <h2>시기</h2>
+      <ul>
+        <li class="on"><a href="#">전체</a></li>
+        <li><a href="#">식민지 시기</a></li>
+        <li><a href="#">해방 이후</a></li>
+        <li><a href="#">지방자치 부활 이후</a></li>
+      </ul>
+      <h2>자료 유형</h2>
+      <ul>
+        <li><a href="b-items.html">사진</a></li>
+        <li><a href="b-items.html">신문</a></li>
+        <li><a href="b-items.html">포스터</a></li>
+        <li><a href="b-items.html">선거공보</a></li>
+      </ul>
+    </aside>
+
+    <section class="section">
+      <h2>이야기</h2>
+      <div class="cards">
+        <a class="card tone-yellow" href="a-story.html">
+          <div class="img"><img src="assets/03-eupsamuso.jpg" alt=""></div>
+          <h3>자치와 통치 그리고 정치</h3>
+          <div class="kind">서론</div>
+          <div class="when">Ⅱ장 첫 절</div>
+          <div class="where">황병주 · 유상희</div>
+          <p class="desc">태초의 정치는 자치일 수밖에 없다</p>
+          <span class="plus">+</span>
+        </a>
+        <a class="card tone-red" href="a-story.html">
+          <div class="img"><img src="assets/02-kimhakbae-1934.jpg" alt=""></div>
+          <h3>식민지 시기</h3>
+          <div class="kind">면협의회와 읍회</div>
+          <div class="when">1920–1945</div>
+          <div class="where">수원면 · 수원읍</div>
+          <p class="desc">자산계층에서 충원된 면협의원과 읍회 의원</p>
+          <span class="plus">+</span>
+        </a>
+        <a class="card tone-blue" href="a-story.html">
+          <div class="img"><img src="assets/05-council1-1952.jpg" alt=""></div>
+          <h3>해방 이후</h3>
+          <div class="kind">제1–3대 시의회</div>
+          <div class="when">1952–1961</div>
+          <div class="where">수원시</div>
+          <p class="desc">전쟁 중에 치러진 첫 지방선거와 시의회</p>
+          <span class="plus">+</span>
+        </a>
+        <a class="card tone-red" href="a-story.html">
+          <div class="img"><img src="assets/07-council4-1991.jpg" alt=""></div>
+          <h3>지방자치 부활과 지역 정치</h3>
+          <div class="kind">제4대 시의회 이후</div>
+          <div class="when">1991–</div>
+          <div class="where">수원시의회</div>
+          <p class="desc">30년 만에 다시 열린 수원시의회</p>
+          <span class="plus">+</span>
+        </a>
+        <a class="card tone-blue" href="a-story.html">
+          <div class="img"><img src="assets/08-posters-1991.jpg" alt=""></div>
+          <h3>시의원 유형</h3>
+          <div class="kind">지역 유지 · 관변단체 · 시민운동</div>
+          <div class="when">1990년대 이후</div>
+          <div class="where">수원시</div>
+          <p class="desc">시의원들은 시대를 닮는다</p>
+          <span class="plus">+</span>
+        </a>
+        <a class="card tone-yellow" href="a-story.html">
+          <div class="img"><img src="assets/11-heoyoungsoon-1997.jpg" alt=""></div>
+          <h3>주민 자치와 지방 자치</h3>
+          <div class="kind">결론</div>
+          <div class="when">Ⅱ장 마지막 절</div>
+          <div class="where">황병주 · 유상희</div>
+          <p class="desc">누가 지역을 대표해 왔는가</p>
+          <span class="plus">+</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="label">시안 C · ref3</div>
+</body>
+</html>

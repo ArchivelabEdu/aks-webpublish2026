@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>검색 — 수원시의원 아카이브</title>
+<meta name="description" content="자연어로 질문하면 SPARQL로 바꿔 수원 지방의원 인물과 자료를 찾습니다.">
+<meta property="og:title" content="수원시의원 아카이브">
+<meta property="og:description" content="누가 수원을 대표해 왔는가 — 수원 지방의원의 역사를 담은 디지털 아카이브">
+<meta property="og:image" content="assets/img/hero.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="rail" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="수원시의원 아카이브 홈">
+      <img src="assets/img/logo-mark.svg" alt="">
+      <span class="logo-text">수원시의원 아카이브<small>SUWON COUNCIL ARCHIVE</small></span>
+    </a>
+    <nav class="nav">
+      <a href="collection.html">컬렉션</a>
+      <a href="exhibit.html">디지털 전시</a>
+      <a href="about.html">소개</a>
+    </nav>
+    <form class="search" action="search.html" role="search">
+      <label class="sr-only" for="hq">자연어 검색</label>
+      <input id="hq" name="q" type="search" placeholder="무엇이든 물어보세요">
+      <button type="submit" aria-label="검색"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg></button>
+    </form>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="ask">
+    <div class="eyebrow">자연어 검색 · SPARQL</div>
+    <h1>무엇이 궁금하세요?</h1>
+    <form class="ask-form" action="search.html" role="search">
+      <label class="sr-only" for="ask">질문</label>
+      <input id="ask" name="q" type="search" placeholder="예: 해방 이후 관료 출신 시의원은 누구?" autocomplete="off">
+      <button type="submit">검색</button>
+    </form>
+    <div class="examples"><span>예시 질문</span>
+      <a href="search.html?q=해방 이후 관료 출신 시의원은 누구?">해방 이후 관료 출신 시의원은 누구?</a>
+      <a href="search.html?q=부자가 함께 시의원을 지낸 경우">부자가 함께 시의원을 지낸 경우</a>
+      <a href="search.html?q=여성 시의원">여성 시의원</a>
+      <a href="search.html?q=제4대 시의원 중 관변단체 출신">제4대 시의원 중 관변단체 출신</a>
+      <a href="search.html?q=사회운동 출신 의원">사회운동 출신 의원</a>
+      <a href="search.html?q=군인 출신으로 야당 활동을 한 의원">군인 출신으로 야당 활동을 한 의원</a>
+      <a href="search.html?q=1929년 면협의원">1929년 면협의원</a>
+      <a href="search.html?q=수원박물관이 소장한 사진">수원박물관이 소장한 사진</a>
+      <a href="search.html?q=차인순 관련 자료">차인순 관련 자료</a>
+      <a href="search.html?q=정미소">정미소</a>
+    </div>
+  </section>
+
+  <section class="answer">
+    <div class="interp" id="interp" aria-live="polite"></div>
+    <p class="status" id="status" aria-live="polite"></p>
+    <div id="results"></div>
+  </section>
+
+  <details class="sparql-box" open>
+    <summary>SPARQL 질의 <span>질문이 이렇게 바뀌었습니다. 고쳐서 다시 실행할 수 있습니다.</span></summary>
+    <textarea id="sparql" spellcheck="false" aria-label="SPARQL 질의"></textarea>
+    <div class="sparql-bar">
+      <button id="run" type="button">SPARQL 실행 <kbd>⌘↵</kbd></button>
+      <span>트리플 <b id="triples">–</b>개 · 어휘: Dublin Core, FOAF, SKOS, schema.org</span>
+      <a id="ttl" download="suwon-council-archive.ttl">데이터 내려받기 (Turtle)</a>
+    </div>
+  </details>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 수원시의원 아카이브 · 원문: 황병주·유상희, 『수원시의원으로 살다』 Ⅱ장</span>
+    <nav><a href="collection.html">컬렉션</a><a href="exhibit.html">디지털 전시</a><a href="about.html">소개</a></nav>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script type="module" src="assets/js/search.js"></script>
+</body>
+</html>
